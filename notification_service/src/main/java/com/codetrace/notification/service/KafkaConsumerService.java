@@ -15,7 +15,7 @@ public class KafkaConsumerService {
     @Autowired
     private EmailService emailService;
 
-    @KafkaListener(topics = "${app.kafka.topics.user-registered:user.registered}", groupId = "notification-group", containerFactory = "userDtoKafkaListenerContainerFactory")
+    @KafkaListener(topics = "user.registered", groupId = "notification-group", containerFactory = "userDtoKafkaListenerContainerFactory")
     public void consumeUserRegistered(UserDTO userDTO) {
         Map<String, Object> variables = new HashMap<>();
         variables.put("firstName", userDTO.getFirstName());
